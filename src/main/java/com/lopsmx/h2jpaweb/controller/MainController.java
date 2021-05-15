@@ -24,10 +24,7 @@ public class MainController {
 	@RequestMapping("/billionaires")
 	public ModelAndView billionaires() {
 		ModelAndView modelAndView = new ModelAndView("billionaires");
-		Iterable<Billionaire> billionaries = billionaireService.findAll();
-		billionaries.forEach(billionarie -> {
-			log.info(billionarie.toString());
-		});
+		Iterable<Billionaire> billionaries = billionaireService.findAll();		
 		
 		//Revisar si se puede evitar el string
 		modelAndView.addObject("billionaries", billionaries);
