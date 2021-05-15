@@ -52,7 +52,7 @@ public class Billionaire {
 	public String toString() {
 		return "Billionaire [id=" + id + 
 							", firstName=" + firstName + 
-							", last_name=" + lastName + 
+							", lastName=" + lastName + 
 							", career=" + career
 				+ "]";
 	}
