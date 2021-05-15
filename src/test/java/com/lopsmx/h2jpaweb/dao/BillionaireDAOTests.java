@@ -17,6 +17,7 @@ public class BillionaireDAOTests {
 	
 	@Test
 	public void findAllBillionaries() {
+		
 		log.info("***** Find Billionaries *****");		
 		
 		billionaireDAO.findAll().forEach(billionarie -> {
