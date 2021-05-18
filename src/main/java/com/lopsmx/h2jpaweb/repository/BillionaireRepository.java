@@ -10,4 +10,5 @@ public interface BillionaireRepository extends CrudRepository<Billionaire, Long>
 	List<Billionaire> findByLastName(String lastName);
 	Billionaire findById(long id);
 	
+	
 }
