@@ -23,5 +23,10 @@ public class BillionaireServiceImpl implements BillionaireService{
 	public List<Billionaire> findByLastName(String lastName) {
 		return billionaireRepository.findByLastName(lastName);
 	}
+	@Override
+	public void add(Billionaire billionaire) {
+		billionaireRepository.save(billionaire);
+		
+	}
 
 }

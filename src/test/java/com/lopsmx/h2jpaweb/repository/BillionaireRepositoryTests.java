@@ -22,14 +22,14 @@ public class BillionaireRepositoryTests {
 	private static final Logger log = LoggerFactory.getLogger(BillionaireRepositoryTests.class);
 	
 	@Autowired
-	BillionaireRepository billionaireDAO; 
+	BillionaireRepository billionaireRepository; 
 	
 	@Test
 	public void findAllBillionaries() {
 		
 		log.info("***** Find Billionaries *****");		
 		
-		billionaireDAO.findAll().forEach(billionarie -> {
+		billionaireRepository.findAll().forEach(billionarie -> {
 			log.info(billionarie.toString());
 		});
 	}
@@ -39,7 +39,7 @@ public class BillionaireRepositoryTests {
 		
 		log.info("***** Find Billionarie LastName *****");
 		
-		List<Billionaire> billionaries = billionaireDAO.findByLastName("Alakija");
+		List<Billionaire> billionaries = billionaireRepository.findByLastName("Alakija");
 		
 		assertThat(billionaries.size()).isEqualTo(1);
 		assertThat(billionaries.get(0).getFirstName()).isEqualTo("Folrunsho");
@@ -53,10 +53,17 @@ public class BillionaireRepositoryTests {
 		
 		log.info("***** Find Billionarie LastName Not Exists *****");
 		
-		List<Billionaire> billionaries = billionaireDAO.findByLastName("Walker");
+		List<Billionaire> billionaries = billionaireRepository.findByLastName("Walker");
 		
 		assertThat(billionaries.size()).isEqualTo(0);
 		
+	}
+	
+	@Test
+	public void addBillionaire() {
+		log.info("***** Add Billionarie *****");
+		Billionaire billionaire = new Billionaire("Jeff", "Bezos", "Amazon Online");		
+		billionaireRepository.save(billionaire);
 	}
 
 }

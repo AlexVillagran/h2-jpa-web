@@ -4,11 +4,10 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.lopsmx.h2jpaweb.service.BillionaireService;
 
-@Component
+
 public class LastNameValidator implements ConstraintValidator<LastNameConstraint, String>{	
 	
 	@Autowired
@@ -25,14 +24,13 @@ public class LastNameValidator implements ConstraintValidator<LastNameConstraint
 			return false;
 			
 		} else if(billionaireService.findByLastName(lastName ).size() > 0 ) {		
-			context.buildConstraintViolationWithTemplate("Last name esixts!!")
+			context.buildConstraintViolationWithTemplate("Last name exists!!")
 				.addConstraintViolation();
 			return false;			
 			
 		}else {
 			return true;
-		}
-		
+		}		
 		
 	}
 

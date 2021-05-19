@@ -7,13 +7,15 @@
 	<h2>New User</h2>
 	
 	<form action="#" th:action="@{/billionarie}" th:object="${billionaireForm}" method="post">
-		<ul>
-  			<li th:each="err : ${#fields.errors('*')}" th:text="${err}" />
-		</ul>
-		<label for="firstName">Email: </label>
+		<label for="firstName">First Name: </label>
         <input type="text" th:field="*{firstName}"/>
         <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</p>
-        
+        <label for="firstName">Last Name: </label>
+        <input type="text" th:field="*{lastName}"/>
+        <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</p>
+        <label for="firstName">Career: </label>
+        <input type="text" th:field="*{career}"/>
+        <p th:if="${#fields.hasErrors('career')}" th:errors="*{career}">Career Error</p>
         <button type="submit">Submit</button>
         
 	</form>

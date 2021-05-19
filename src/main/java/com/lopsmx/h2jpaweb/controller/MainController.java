@@ -1,14 +1,18 @@
 package com.lopsmx.h2jpaweb.controller;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lopsmx.h2jpaweb.form.BillionaireForm;
+import com.lopsmx.h2jpaweb.model.Billionaire;
 import com.lopsmx.h2jpaweb.service.BillionaireService;
 
 @Controller
@@ -36,10 +40,21 @@ public class MainController {
 	}
 	
 	@PostMapping("/billionaire")
-	public String submitForm(BillionaireForm billionaireForm, Model  model) {
+	public String submitForm(@Valid BillionaireForm billionaireForm,
+			BindingResult  bindingResult, Model model) {
+			
+			if (bindingResult.hasErrors()) {
+				return "billionaire";
+			} else {
+				
+				Billionaire billionaire = new Billionaire();
+				BeanUtils.copyProperties(billionaireForm, billionaire);
+				billionaireService.add(billionaire);
+				model.addAttribute("billionaires", billionaireService.findAll());
+				return "billionaires";
+			}
 		
 		
-		return "billionaires";
 	}
 	
 }

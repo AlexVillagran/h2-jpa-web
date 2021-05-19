@@ -11,17 +11,14 @@ import javax.persistence.Table;
 public class Billionaire {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String firstName;
 	private String lastName;
-	private String career;
-	
-	
+	private String career;	
 	
 	public Billionaire() {}
 	public Billionaire(String firstName, String lastName, String career) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.career = career;

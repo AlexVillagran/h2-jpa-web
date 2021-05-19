@@ -1,15 +1,18 @@
 package com.lopsmx.h2jpaweb.form;
 
+import javax.validation.constraints.NotBlank;
+
 import com.lopsmx.h2jpaweb.form.validate.LastNameConstraint;
 
 public class BillionaireForm {
 	private Long id;
-	private String firstName;
 	
+	@NotBlank
+	private String firstName;	
 	@LastNameConstraint
 	private String lastName;
-	private String career;
-	
+	@NotBlank
+	private String career;	
 	
 	public BillionaireForm() {}
 	
